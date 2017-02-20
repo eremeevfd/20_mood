@@ -1,6 +1,7 @@
 # Site for the Mood
 
-[TODO. There will be project description]
+Site with very funny russian quotes and partially aphorisms. [Go to 
+it](https://eremeevfd.github.io/20_mood/index.html) and laugh-a-lot!!!
 
 # Project Goals
 
