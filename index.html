@@ -17,29 +17,35 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <style type="text/css">
-  body {
+  .body {
     margin: auto;
-    width: 960px;
-    padding: 20px;
-    position: relative;
+    width: 80%;
+    margin: auto auto auto auto;
+    #position: fixed;
+    background: url(https://static.tildacdn.com/020afe7f-196a-432c-9c51-5f2e38509b3b/Yaomingface.jpg);
+    #background-size: cover;
+    content-color: white;
     }
-  div.jumbotron {
+  .jumbotron {
     align-self: center;
     padding: 20px;
     box-sizing: border-box;
     display: block;
     font-family: Helvetica;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-bottom: 10px;
+    margin-bottom: 0px;
   }
-  h1 {
+  .main-header {
     align-self: stretch;
   }
-  p {
+  .js-quote {
     display: block;
     box-sizing: border-box;
   }
+    .container {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 6px;
+    }
   </style>
   <script id="quotes_json" type="application/json">
     [
@@ -74,13 +80,35 @@
     ]
   </script>
 </head>
-<body>
-<h1>Лови смешнявочку:</h1>
+<body class="body">
+<div class="container">
+<h1 class="main-header">Лови смешнявочку:</h1>
 <div class="jumbotron">
-  <p id="test"></p>
+  <p class="js-quote"></p>
 </div>
-<button type="button" class="btn btn-lg btn-default">Ещё одну!</button>
+<div class="col-md-6 col-md-offset-3" style="padding: 20px"><button type="button" class="btn js-btn btn-lg btn-default">Ещё одну!</button></div>
+</div>
+<!--<img src="http://risovach.ru/upload/2013/06/mem/dovolnaya-obezyana_22217976_orig_.jpg">-->
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/random.js"></script>
+<script>
+  // Function to get random phrase
+
+$(document).ready(function(){
+  var myObj = JSON.parse($("#quotes_json").html());
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  var jsonLength = Object.keys(myObj).length;
+  var randomNumber = getRndInteger(0, jsonLength);
+  $(".js-quote").text(myObj[randomNumber].phrase);
+})
+
+// Function to refresh page by clicking on a button
+$(".js-btn").click(function() {
+  location.reload();
+});
+</script>
 </body>
 </html>
